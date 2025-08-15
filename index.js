@@ -9,4 +9,70 @@
 const NAMES = ["Alice", "Bob", "Carol", "Dave", "Eve"];
 const OCCUPATIONS = ["Writer", "Teacher", "Programmer", "Designer", "Engineer"];
 const PRICE_RANGE = { min: 20, max: 200 };
-const NUM_FREELANCERS = 100;
+// === State ===
+const NUM_FREELANCERS = 10;
+
+const freelancers = Array.from(
+  { length: NUM_FREELANCERS },
+  generate_freelance_information
+);
+
+const AVERAGE_RATE = get_avg_rate(freelancers);
+
+// Write a function that returns a freelancer object with:
+// randomly generated name,
+// occupation,
+// rate
+function generate_freelance_information() {
+  return {
+    name: NAMES[Math.floor(Math.random() * NAMES.length)],
+    occupation: OCCUPATIONS[Math.floor(Math.random() * OCCUPATIONS.length)],
+    rate: Math.floor(Math.random() * PRICE_RANGE.max) + PRICE_RANGE.min,
+  };
+}
+
+console.log(freelancers);
+// Write a function that returns the average rate of all freelancers in state.
+function get_avg_rate(freelancer_list) {
+  const total =
+    freelancer_list.reduce((accumulator, person) => {
+      return accumulator + person.rate;
+    }, 0) / NUM_FREELANCERS;
+
+  return total;
+}
+
+console.log(AVERAGE_RATE);
+
+// Write a component function to represent a single freelancer.
+function generate_freelancer_row({ name, occupation, rate }) {}
+// Write a component function to represent an array of freelancers.
+// Write a component function to represent the average rate of all freelancers.
+function average_rate_component() {
+  const $p = document.createElement("p");
+  $p.textContent = `Average Rate: ${AVERAGE_RATE}`;
+  return $p;
+}
+
+// Write and call a render function that will mount the application onto the document.
+function render() {
+  const $app = document.getElementById("app");
+  $app.innerHTML = `
+        <h1>Freelancer List</h1>
+        <AVERAGE_RATE></AVERAGE_RATE>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Occupation</th>
+                    <th>Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    `;
+  $app.querySelector("AVERAGE_RATE").replaceWith(average_rate_component());
+}
+
+render();
