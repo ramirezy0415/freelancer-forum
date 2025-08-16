@@ -45,8 +45,23 @@ function get_avg_rate(freelancer_list) {
 console.log(AVERAGE_RATE);
 
 // Write a component function to represent a single freelancer.
-function generate_freelancer_row({ name, occupation, rate }) {}
+function generate_freelancer_row({ name, occupation, rate }) {
+  const $tr = document.createElement("tr");
+  $tr.innerHTML = `
+    <td>${name}<td>
+    <td>${occupation}<td>
+    <td>${rate}<td>
+  `;
+  return $tr;
+}
 // Write a component function to represent an array of freelancers.
+function ROWS(freelancer_list) {
+  const freelancers = freelancer_list.map(generate_freelancer_row);
+  const $tbody = document.createElement("tbody");
+
+  $tbody.replaceChildren(...freelancers);
+  return $tbody;
+}
 // Write a component function to represent the average rate of all freelancers.
 function average_rate_component() {
   const $p = document.createElement("p");
@@ -63,9 +78,9 @@ function render() {
         <table>
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Occupation</th>
-                    <th>Rate</th>
+                    <th>NAME</th>
+                    <th>OCCUPATION</th>
+                    <th>RATE</th>
                 </tr>
             </thead>
             <tbody>
@@ -73,6 +88,7 @@ function render() {
         </table>
     `;
   $app.querySelector("AVERAGE_RATE").replaceWith(average_rate_component());
+  $app.querySelector("tbody").replaceWith(ROWS(freelancers));
 }
 
 render();
