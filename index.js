@@ -64,9 +64,9 @@ function ROWS(freelancer_list) {
 }
 // Write a component function to represent the average rate of all freelancers.
 function average_rate_component() {
-  const $p = document.createElement("p");
-  $p.textContent = `Average Rate: ${AVERAGE_RATE}`;
-  return $p;
+  const $h2 = document.createElement("h2");
+  $h2.textContent = `Average Rate: ${AVERAGE_RATE}`;
+  return $h2;
 }
 
 // Write and call a render function that will mount the application onto the document.
@@ -74,20 +74,18 @@ function render() {
   const $app = document.getElementById("app");
   $app.innerHTML = `
         <h1>Freelancer List</h1>
-        <AVERAGE_RATE></AVERAGE_RATE>
+        <h2></h2>
         <table>
             <thead>
-                <tr>
-                    <th>NAME</th>
-                    <th>OCCUPATION</th>
-                    <th>RATE</th>
-                </tr>
+                <th>NAME</th>
+                <th>OCCUPATION</th>
+                <th>RATE</th>
             </thead>
             <tbody>
             </tbody>
         </table>
     `;
-  $app.querySelector("AVERAGE_RATE").replaceWith(average_rate_component());
+  $app.querySelector("h2").replaceWith(average_rate_component());
   $app.querySelector("tbody").replaceWith(ROWS(freelancers));
 }
 
