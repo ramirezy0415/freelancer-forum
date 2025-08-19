@@ -31,7 +31,6 @@ function generate_freelance_information() {
   };
 }
 
-console.log(freelancers);
 // Write a function that returns the average rate of all freelancers in state.
 function get_avg_rate(freelancer_list) {
   const total =
@@ -42,15 +41,13 @@ function get_avg_rate(freelancer_list) {
   return total;
 }
 
-console.log(AVERAGE_RATE);
-
 // Write a component function to represent a single freelancer.
 function generate_freelancer_row({ name, occupation, rate }) {
   const $tr = document.createElement("tr");
   $tr.innerHTML = `
-    <td>${name}<td>
-    <td>${occupation}<td>
-    <td>${rate}<td>
+    <td>${name}</td>
+    <td>${occupation}</td>
+    <td>${rate}</td>
   `;
   return $tr;
 }

@@ -2,23 +2,24 @@
   margin: 0;
   font-family: "Times New Roman", Times, serif;
 }
+
 #app {
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 
-table,
-tbody,
-thead th {
-  border: 1px dotted black;
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin: 10px;
 }
 
-thead tr,
-tbody tr {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+th,
+td {
+  text-align: left;
+  border: 1px dotted black;
+  border-collapse: collapse;
 }
 
 tbody tr:nth-child(odd) {
