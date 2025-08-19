@@ -10,13 +10,11 @@ const NAMES = ["Alice", "Bob", "Carol", "Dave", "Eve"];
 const OCCUPATIONS = ["Writer", "Teacher", "Programmer", "Designer", "Engineer"];
 const PRICE_RANGE = { min: 20, max: 200 };
 // === State ===
-const NUM_FREELANCERS = 10;
-
+const NUM_FREELANCERS = 100;
 const freelancers = Array.from(
   { length: NUM_FREELANCERS },
   generate_freelance_information
 );
-
 const AVERAGE_RATE = get_avg_rate(freelancers);
 
 // Write a function that returns a freelancer object with:
@@ -86,4 +84,5 @@ function render() {
   $app.querySelector("tbody").replaceWith(ROWS(freelancers));
 }
 
+// Render image to the page
 render();
